@@ -6,11 +6,7 @@ app = dash.Dash(__name__)
 
 # App Layout
 
-app.layout = html.Div([
-
-    html.H1("Nestle Starbucks Social Media Data", style={'text-align': 'center'}),
-
-    dcc.Dropdown(
+dropdown = dcc.Dropdown(
         options=[
             {'label': 'Nestle', 'value': 'Nestle'},
             {'label': 'Starbucks', 'value': 'Starbucks'},
@@ -18,8 +14,20 @@ app.layout = html.Div([
         ],
         value='MTL'
     )
+
+
+
+app.layout = html.Div([
+
+    html.H1("Nestle Starbucks Social Media Data", style={'text-align': 'center'}),
+    dbc.Row([dbc.Col(dropdown, width=12)]), 
+    html.Br(),
+    html.Img(src='/assets/wordcloud/twitter cloud 1.png', style={'height':'20%', 'width':'20%'}),
+    html.Br(),
+    html.Img(src='/assets/wordcloud/twitter cloud 2.png', style={'height':'20%', 'width':'20%'})
+    
 ])
 
 # Run App
 if __name__ == '__main__':
-    app.run_server(debug = True)
+    app.run_server(debug = False)
